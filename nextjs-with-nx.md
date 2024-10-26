@@ -84,12 +84,10 @@ echo -e "${GREEN}Deployment completed successfully!${NC}"
 
 ### Add the following line to the `next.config.js` file
 
-```js
-+ const distDir = process.env.NEXTJS_BUILD_DIR ?? '.next';
-
+```diff
 /** @type {import("next").NextConfig} */
 const config = {
-+ distDir,
++ distDir: process.env.NEXTJS_BUILD_DIR ?? '.next',
   reactStrictMode: true,
   i18n: {
     locales: ["en", "sv"],
