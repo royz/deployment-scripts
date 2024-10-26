@@ -70,7 +70,11 @@ if [ ! -d ".temp" ]; then
 fi
 
 if [ -d ".next" ]; then
-  PROJECT_BACKUP_DIR="${BACKUP_DIR}/${NAME}_${START_TIMESTAMP}"
+  PROJECT_BACKUP_DIR="${BACKUP_DIR}/${NAME}/${START_TIMESTAMP}"
+
+  # Remove backups older than 10 days
+  find "${BACKUP_DIR}/${NAME}/*" -type d -maxdepth 0 -ctime +10 | xargs rm -rf
+
   echo "Backing up previous deployment to \"${PROJECT_BACKUP_DIR}\""
   mkdir -p $PROJECT_BACKUP_DIR
   mv .next "${PROJECT_BACKUP_DIR}/.next"
