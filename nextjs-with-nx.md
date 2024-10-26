@@ -53,14 +53,16 @@ echo "Building..."
 export NEXTJS_BUILD_DIR=.temp
 export NX_DAEMON=false
 npx nx build $NAME_IN_PACKAGE_JSON --verbose
-export NEXTJS_BUILD_DIR=.next
 
 if [ $? -eq 0 ]; then
   echo -e "${GREEN}Build successful!${NC}"
 else
   echo -e "${RED}Build failed!${NC}"
+  rm -rf .temp
   exit 1
 fi
+
+export NEXTJS_BUILD_DIR=.next
 
 if [ ! -d ".temp" ]; then
   echo -e "${RED}\".temp\" dir does not exist!${NC}"
