@@ -1,5 +1,12 @@
 ### The following instrucions are based on an nx monoremo (pnpm workspace) but it should generally be applicable for a standalone nextjs project as well.
 
+> #### This script does the follwing :
+>
+> - Build the project in .temp dir
+> - Backup previous build dir (.next)
+> - Swap the old build dir (.next) with the new buid dir (.temp)
+> - Start the project with pm2 (restart if it's an existing project)
+
 `deploy.sh` Deploy script - should be placed within the root dir besides next.config.js file.
 
 ```bash
